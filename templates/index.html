@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+    {% load static %}
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>
+                            {{ message }}
+                            <button class="close-button" onclick="this.parentNode.style.display = 'none';">&times;</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+        <div class="row">
+            <div class="col-2">
+                <h1>Give your workout <br> A New Style</h1>
+                <p>Success isn't always about greatness. It's about consistency
+                    ,consistent <br>hard work gains success.Greatness will come.<br>
+                    <a href="" class="btn">Explore Now &#8594</a>
+                </p>
+            </div>
+            <div class="col-2">
+                <img src="static/images/test.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} Display products {% endcomment %}
+
+{% comment %} 
+
+{% for product, range, nSlides in allProds %}
+<div class="small-container">
+<h2 class="title">{{product.0.category}} Flashsale</h2>
+{% for i in product %}
+<div class="row">
+    
+    <div class="col-4">
+            <img src="/media/{{i.image}}" class="card-img-top" alt="not found" height="200px" width="150px" />
+            <h5 id="namepr{{i.id}}">{{i.product_name}}</h5>
+
+        <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        <h6>
+            Price:<span id="pricepr{{i.id}}">{{i.price}}</span>
+        </h6>
+        <p>{{i.desc|slice:"0:53"}}...</p>
+            <span id="divpr{{i.id}}" class="divpr">
+              <button id="pr{{i.id}}" class="btn btn-danger cart btn-sm mt-0">
+                AddToCart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </span>
+
+            <a href="/media/{{i.image}}">
+              <button class="btn btn-dark btn-sm cart"><i class="fa-solid fa-eye"></i></button></a>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endfor %} {% endcomment %}
+
+
+
+
+
+
+
+
+    <div class="small-container">
+        {% for category_products, slides_range, nSlides in allProds %}
+            <h2 class="title">{{ category_products.0.category }} Flashsale</h2>
+            <div class="row">
+                {% for product in category_products %}
+                    <div class="col-4">
+                        <a href="/media/{{ product.image }}"><img id="imagepr{{product.id}}" alt="Product Image" class="popover-image" style="box-shadow: 0 0 20px 0px rgba(0,0,0,0.5);" src="/media/{{ product.image }}" height="225px" width="200px"></a>
+                        <h4 id="namepr{{product.id}}">{{ product.product_name }}</h4>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h6>
+                            Price:<span id="pricepr{{product.id}}">{{product.price}}</span>
+                        </h6>                        
+                        <p>{{ product.desc|slice:"0:53" }}...</p>
+                        <span id="divpr{{ product.id }}" class="divpr">
+                            <button id="pr{{ product.id }}" class="btn btn-danger cart btn-sm mt-0">
+                                AddToCart <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </span>
+                        {% comment %} <a href="/media/{{ product.image }}">
+                            <button class="btn btn-dark btn-sm cart"><i class="fa-solid fa-eye"></i></button>
+                        </a> {% endcomment %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+    <!-- offer -->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="static/images/exclusive.png" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusively Available on RedStore</p>
+                    <h1>Smart Band 4</h1>
+                    <small>Smart Band decription here<br></small>
+                    <a href="" class="btn">Buy Now &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- testimonial -->
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>This is Review.</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="static/images/user-1.png">
+                    <h3>Rittu</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>This is Review.</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="static/images/user-2.png">
+                    <h3>Himanshu</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>This is Review.</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="static/images/user-3.png">
+                    <h3>Akshita</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- brands -->
+    <div class="brands">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="static/images/logo-godrej.png">
+                </div>
+                <div class="col-5">
+                    <img src="static/images/logo-oppo.png">
+                </div>
+                <div class="col-5">
+                    <img src="static/images/logo-coca-cola.png">
+                </div>
+                <div class="col-5">
+                    <img src="static/images/logo-paypal.png">
+                </div>
+                <div class="col-5">
+                    <img src="static/images/logo-philips.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {% endblock body %}

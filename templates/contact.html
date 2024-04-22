@@ -1,0 +1,14 @@
+{% extends 'formbase.html' %}
+{% block formbody %}
+<h3> Contact Us</h3>
+<form id="RegForm" action="contact" method="post">{% csrf_token %}
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="number" name="number" placeholder="Number" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea id="message" name="message" placeholder="Message" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    
+</form>
+
+{% endblock formbody %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+    {% block title %}Reset Passwed Link{% endblock title %}
+    {% block body %}
+</div>
+</div>
+    <div class="container">
+        <div class="title">
+            <h2>Request a reset Link</h2>
+        </div>
+        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li>
+                                        {{ message }}
+                                        <button class="close-button" onclick="this.parentNode.style.display = 'none';">&times;</button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+        <div class="row">
+    <form style="margin-top: 0px; margin-bottom: 120px" id="LoginForm" action="/auth/request-reset-email/" method="post">{% csrf_token %}
+        <input type="email" name="email" placeholder="Mail" required>
+        <button type="submit" class="btn">Submit</button>
+        <br>
+        <p style="text-align: center;">New User? <a href="/auth/account">Register</a></p>
+    </form>
+</div>
+</div>
+
+    {% endblock body %}
+                            

@@ -1,0 +1,15 @@
+{% extends 'formbase.html' %}
+{% block formtitle %}Login{% endblock formtitle %}
+    {% block formbody %}
+    <h2>Login</h2>
+    
+    <form style="top: 130px;" id="LoginForm" action="/auth/login/" method="post">{% csrf_token %}
+        <input type="email" name="email" placeholder="Mail" required>
+        <input type="password" name="pass1" placeholder="Password" required>
+        <button type="submit" class="btn">Login</button>
+        <a href="/auth/request-reset-email/">Forgot password</a>
+        <br>
+        New User? <a href="/auth/account">Register</a>
+    </form>
+    {% endblock formbody %}
+                            

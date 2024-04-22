@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}My Orders{% endblock title %}
+{% block body %}
+{% block head %}
+<style>
+#tbody tr:nth-child(even){background-color: #f2f2f2;}
+
+#tbody tr:hover {background-color: #ddd;}
+</style>
+{% endblock head %}
+</div>
+</div>
+<div class="title">
+    <h1>My Orders</h1>
+</div>
+<div class="row-1">
+<table class="table table-info table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Products</th>
+            <th scope="col">Amount Paid</th>
+            <th scope="col">Payment Status</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order_with_statuses in orders_with_statuses %}
+        <tr>
+            <th scope="oid">{{ order_with_statuses.order.oid }}</th>
+            <td>{{ order_with_statuses.order.name }}</td>
+            <td>{{ order_with_statuses.order.items_json }}</td>
+            <td>{{ order_with_statuses.order.amount }}</td>
+            <td>{{ order_with_statuses.order.paymentstatus }}</td>
+            <td>{{ order_with_statuses.order.address1 }}</td>
+            <td>{{ order_with_statuses.order.phone }}</td>
+            <td>
+                {% for update in order_with_statuses.statuses %}
+                <p>{{ update.update_desc }}</p>
+                {% if update.delivered %}
+                <p><i class="fa-solid fa-circle-check"></i> Delivered</p>
+                {% else %}
+                <p><i class="fa-solid fa-truck"></i> Not Delivered</p>
+                {% endif %}
+                <td><p>{{ update.timestamp }}</p></td>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</div>
+{% endblock body %}

@@ -1,0 +1,15 @@
+{% extends 'formbase.html' %}
+{% block formtitle %}Register{% endblock formtitle %}    
+    {% block formbody %}
+    <h2>Register</h2>
+    
+    <form id="RegForm" action="/auth/account/" method="post">{% csrf_token %}
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="pass1" placeholder="Password" required>
+        <input type="password" name="pass2" placeholder="Confirm Password" required>
+        <button type="submit" class="btn">Register</button>
+        <br>
+        Already Have An Account? <a href="/auth/login/">Login</a>
+    </form>
+    {% endblock formbody %}

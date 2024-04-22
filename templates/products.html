@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+{% comment %} Display products {% endcomment %}
+</div>
+</div>
+<div class="small-container">
+    {% for category_products, slides_range, nSlides in allProds %}
+        <h2 class="title">{{ category_products.0.category }} Flashsale</h2>
+        <div class="row">
+            {% for product in category_products %}
+                <div class="col-4">
+                    <a href="/media/{{ product.image }}"><img id="imagepr{{product.id}}" alt="Product Image" class="popover-image" style="box-shadow: 0 0 20px 0px rgba(0,0,0,0.5);" src="/media/{{ product.image }}" height="225px" width="200px"></a>
+                    <h4 id="namepr{{product.id}}">{{ product.product_name }}</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h6>
+                        Price:<span id="pricepr{{product.id}}">{{product.price}}</span>
+                    </h6>                        
+                    <p>{{ product.desc|slice:"0:53" }}...</p>
+                    <span id="divpr{{ product.id }}" class="divpr">
+                        <button id="pr{{ product.id }}" class="btn btn-danger cart btn-sm mt-0">
+                            AddToCart <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </span>
+                    {% comment %} <a href="/media/{{ product.image }}">
+                        <button class="btn btn-dark btn-sm cart"><i class="fa-solid fa-eye"></i></button>
+                    </a> {% endcomment %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock body %} 
